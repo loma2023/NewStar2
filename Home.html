@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>New Star</title>
+</head>
+
+<body>
+
+    <div class="Page_load">
+        <img class="load" src="CSS/loader-GIF.gif">
+    </div>
+    <audio src="CSS/Msg.mp3"></audio>
+
+    <div class="Msg-Box" id="">
+        <div class="Message">
+            <i class="fa fa-cloud-arrow-up"></i>
+            <h1> جارِ حفظ البيانات </h1>
+            <div class="loader">
+                <div class="load"></div>
+            </div>
+            <div class="btn-oky"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <a class="fa fa-rotate" onclick="location.reload()"></a>
+        <div class="pages" style="display: none;">
+            <a href="#" onclick="GoToPage1()">
+                <span class="fas fa-users"></span>
+                <span> الخراطين</span>
+            </a>
+            <a href="#" onclick="GoToPage2()">
+                <span class="fas fa-file"></span>
+                <span> النواقص</span>
+            </a>
+            <a href="#" onclick="GoToPage5()">
+                <span class="fas fa-trash"></span>
+                <span> المهملات </span>
+            </a>
+            <a href="#" onclick="GoToPage3()">
+                <span class="fas fa-gear"></span>
+                <span> الاعدادات</span>
+            </a>
+            <a href="#" onclick="GoToPage4()">
+                <span class="fas fa-right-from-bracket"></span>
+                <span> الخروج</span>
+            </a>
+        </div>
+        <div class="left-header">
+            <a href="#" onclick="GoToPage3()"><img class="img-user" src="CSS/avatar.svg" alt=""></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section1">
+            <img src="https://www.mindsparktechnologies.com/wp-content/uploads/2021/04/erp-benefits-1.png">
+            <form class="form_insert">
+                <input class="date" type="date">
+                <select class="name1">
+                    <option disabled selected hidden>اسم الخراط</option>
+                    <option value="احمد حسين">احمد حسين</option>
+                    <option value="عاشور عبدالنعيم">عاشور عبدالنعيم</option>
+                    <option value="محمود جبريل">محمود جبريل</option>
+                    <option value="عبدالرحمن السراج">عبدالرحمن السراج</option>
+                    <option value="محمود صابر">محمود صابر</option>
+                    <option value="يوسف علاء">يوسف علاء</option>
+                </select>
+                <select class="name2">
+                    <option disabled selected hidden>المرحله المكمله</option>
+                    <option value="احمد حسين">احمد حسين</option>
+                    <option value="عاشور عبدالنعيم">عاشور عبدالنعيم</option>
+                    <option value="محمود جبريل">محمود جبريل</option>
+                    <option value="عبدالرحمن السراج">عبدالرحمن السراج</option>
+                    <option value="محمود صابر">محمود صابر</option>
+                    <option value="يوسف علاء">يوسف علاء</option>
+                </select>
+                <select class="iteem" onchange="lomafun() ">
+                    <option disabled selected hidden>اسم الصنف</option>
+                </select>
+                <input class="subtotal" type="number" placeholder="العدد">
+                <div class="start_Time" style="display: none;">
+                    <input type="time" onchange="OTime()">
+                    <a>من</a>
+                </div>
+                <div  class="end_Time" style="display: none;">
+                    <a>الي</a>
+                    <input type="time" onchange="OTime()">
+                </div>
+                <input type="button" onclick="insert_value1(id)" id="" class="btn_save" value="حــفــظ">
+            </form>
+
+            <form class="form_search">
+                <div>
+                    <select class="namesearch" onchange="Search1(value)">
+                        <option disabled selected hidden>اسم الخراط</option>
+                        <option value="احمد حسين">احمد حسين</option>
+                        <option value="عاشور عبدالنعيم">عاشور عبدالنعيم</option>
+                        <option value="محمود جبريل">محمود جبريل</option>
+                        <option value="عبدالرحمن السراج">عبدالرحمن السراج</option>
+                        <option value="محمود صابر">محمود صابر</option>
+                        <option value="يوسف علاء">يوسف علاء</option>
+                    </select>
+                    <a class="fas fa-search"></a>
+                </div>
+                <div>
+                    <input class="SDate" type="date" onchange="Search1()">
+                    <a>من</a>
+                </div>
+                <div>
+                    <a>الي</a>
+                    <input class="EDate" type="date" onchange="Search1()">
+                </div>
+            </form>
+
+            <div class="parent-table">
+                <table class="MyTable">
+                    <thead class="table-head">
+                        <tr>
+                            <td>الخراط</td>
+                            <td>المكمله</td>
+                            <td>الصنف</td>
+                            <td>العــدد</td>
+                            <td>الاجمالي</td>
+                            <td>المستخدم</td>
+                            <td>التاريخ</td>
+                            <td>تعديل او حذف</td>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    </tbody>
+
+                </table>
+            </div>
+
+        </section>
+
+        <section class="section2" style="display: none;">
+            <img src="https://dynamics.folio3.com/blog/wp-content/uploads/2021/03/ERP.png">
+            <form class="form_insert">
+                <input class="date" type="date">
+                <select class="iteem">
+                    <option disabled selected hidden>اسم الصنف</option>
+                </select>
+                <input class="note" type="text" placeholder="ملاحظات">
+                <input type="button" onclick="insert_value2(id)" id="" class="btn_save" value="حــفــظ">
+            </form>
+
+            <form class="form_search">
+                <div>
+                    <select class="namesearch" onchange="Search2(value)">
+                        <option disabled selected hidden>اسم الصنف</option>
+                    </select>
+                    <a class="fas fa-search"></a>
+                </div>
+                <div>
+                    <input class="SDate" type="date" onchange="Search2()">
+                    <a>من</a>
+                </div>
+                <div>
+                    <a>الي</a>
+                    <input class="EDate" type="date" onchange="Search2()">
+                </div>
+            </form>
+
+            <div class="parent-table">
+                <table class="MyTable">
+                    <thead class="table-head">
+                        <tr>
+                            <td>التاريخ</td>
+                            <td>الصنف</td>
+                            <td>ملاحظات</td>
+                            <td>المستخدم</td>
+                            <td>تعديل او حذف</td>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+
+        <section class="section3" style="display: none;">
+            <div class="left">
+                <a onclick="Edit()" class="fa-solid fa-pen-to-square"></a>
+                <img class="imgUser" src="" alt="">
+                <h2></h2>
+                <p style="margin: 10px;"></p>
+                <p style="margin: 10px;"></p>
+                <div class="div-details">
+                    <h1>صلاحيات المستخدم</h1>
+                    <div class="details">
+                        <h3>نوع المستخدم : </h3>
+                        <p></p>
+                    </div>
+                    <div class="details">
+                        <h3>ادخال البيانات : </h3>
+                        <p></p>
+                    </div>
+                    <div class="details">
+                        <h3>قراءة البيانات : </h3>
+                        <p></p>
+                    </div>
+                    <div class="details">
+                        <h3>تعديل البيانات : </h3>
+                        <p></p>
+                    </div>
+                    <div class="details">
+                        <h3>حذف البيانات : </h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div id="right" class="right" style="display: none;">
+                <div class="upload">
+                    <img id="CSS/avatar.svg" class="imgUser" src="CSS/avatar.svg" alt="">
+                    <img class="imgloader" src="CSS/loader-GIF.gif" alt="" style="display: none;">
+                    <div class="input-icon">
+                        <input class="file" type="file" accept="image/*" onchange="userimg(event)">
+                        <i class="fa fa-camera"></i>
+                    </div>
+                </div>
+
+                <section class="section-form" style="grid-template-columns: 1fr;">
+                    <form>
+                        <input id="Username" class="Username" type="text" placeholder="اسم المستخدم">
+                        <input id="phone" class="phone" type="tel" placeholder="جوال المستخدم">
+                        <input id="email" class="email" type="email" placeholder="Example@gmail.com">
+                        <input id="password" class="password" type="password" placeholder="كلمة مرور">
+                        <input id="Rpassword" class="Rpassword" type="password" placeholder="تأكيد كلمة المرور">
+                        <select id="typeuser" class="typeuser" onchange="ShowPowers(value)">
+                            <option disabled selected hidden>نوع المستخدم</option>
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
+                        </select>
+                    </form>
+                    <div class="parent-power" style="text-align: center;display: none;">
+                        <h1>صلاحيات المستخدم</h1>
+                        <div class="powers">
+                            <div>
+                                <label for="A">ادخال بيانات</label>
+                                <input id="A" class="checkbox Insert-box" type="checkbox" value="false">
+                            </div>
+                            <div>
+                                <label for="B">قراءة بيانات</label>
+                                <input id="B" class="checkbox Read-box" type="checkbox" value="false">
+                            </div>
+                            <div>
+                                <label for="C">تعديل بيانات</label>
+                                <input id="C" class="checkbox Edit-box" type="checkbox" value="false">
+                            </div>
+                            <div>
+                                <label for="D">حذف بيانات</label>
+                                <input id="D" class="checkbox Delete-box" type="checkbox" value="false">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="button" id="save" onclick="insert_value(id)" value="حــفــظ" class="btn_save">
+                </section>
+            </div>
+
+            <div class="con-User" style="display: none;">
+                
+            </div>
+
+
+            <a href="#right" onclick="add_user()" class="fas fa-plus"></a>
+
+        </section>
+
+        <section class="section4" style="display: none;">
+            <div class="parent-table">
+                <table class="MyTable">
+                    <thead class="table-head">
+                        <tr>
+                            <td>التاريخ</td>
+                            <td>الصنف</td>
+                            <td>ملاحظات</td>
+                            <td>المستخدم</td>
+                            <td>  استرجاع او حذف  </td>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+    </div>
+    <a href="#" class="fa fa-search ico-search" onclick="Show_search(event)" id="search" style="display: none;"></a>
+
+    <script src="JS/main.js"></script>
+    <script src="JS/section1.js"></script>
+    <script src="JS/section2.js"></script>
+    <script src="JS/section3.js"></script>
+    <script src="JS/section4.js"></script>
+
+</body>
+
+</html>
